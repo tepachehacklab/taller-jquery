@@ -1,0 +1,71 @@
+<!--
+/*
+* Autor Leonardo López <leonard_156@hotmail.com>
+* @HijinLopez twitter
+* Tepache Hacklab 9 de septiembre de 2014
+*/
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Slide Right</title>
+<script type="text/javascript" src="JQuery-1.6.3.js"></script>
+<script type="text/javascript" src="slideRight.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(e) {
+        $('#slide').slideRight({
+            speed : 3000,
+            effect_speed : 600
+        }
+        ).css('border','5px dotted red');
+    });
+</script>
+<style>
+#slide{
+	height: 500px;
+        width: 1280px;
+	position:relative;
+        display: block;
+	overflow: hidden;
+	padding:0px 0px;
+	margin:0px auto;
+}
+#slide > li{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 100%;
+	width: 100%;
+}
+#slide li img{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	overflow: hidden;
+	height: 100%;
+	width: 100%;
+}
+</style>
+</head>
+<body>
+<ul id="slide">
+    <li>
+        <img src="img/1.jpg" width="1280" height="500" />
+    </li>
+    <li>
+        <img src="img/2.jpg" width="1280" height="500" />
+    </li>
+    <li>
+        <img src="img/3.jpg" width="1280" height="500" />
+    </li>
+    <li>
+        <img src="img/4.jpg" width="1280" height="500" /> 
+    </li>
+    <li>
+        <img src="img/5.jpg" width="1280" height="500" /> 
+    </li>
+</ul>
+    
+</body>
+</html>

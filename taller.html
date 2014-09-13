@@ -1,0 +1,128 @@
+<!--
+/*
+* Autor Leonardo López <leonard_156@hotmail.com>
+* @HijinLopez twitter
+* Tepache Hacklab 9 de septiembre de 2014
+*/
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Slide Right</title>
+        <script type="text/javascript" src="JQuery-1.6.3.js"></script>
+        <script type="text/javascript">
+            
+            /*
+            * Autor Leonardo López <leonard_156@hotmail.com>
+            * @HijinLopez twitter
+            * Tepache Hacklab 9 de septiembre de 2014
+            */
+
+            //DEFINICION BASICA PARA UN PLUGIN JQUERY QUE CAMBIA EL COLOR DEL TEXTO
+            $.fn.ejemplo1 = function(){
+                this.css('color','blue');
+            };
+            
+            // DEFINICION BASICA DEL PLUGIN JQUERY QUE CAMBIA EL COLOR DE TEXT0
+            // RETORNANDO EL OBJETO ORIGINAL PARA PERMITIR ENCADENAMIENTO DE METODOS
+            $.fn.encadenado = function(){
+                this.css('color','yellow');
+                return this;
+            };
+            
+            // DEFINICION BASICA DEL PLUGIN JQUERY QUE CAMBIA EL COLOR DE TEXT0
+            // PROTEGIENDO EL "$" PARA EVITAR CONFLICTOS CON OTRAS LIBRERIAS
+            (function($){
+                $.fn.protegiendo = function(){
+                    this.css('color','red');
+                    return this;
+                };
+            }(jQuery));
+            
+            // DEFINICION BASICA DEL PLUGIN JQUERY QUE CAMBIA EL COLOR DE TEXT0
+            // PROTEGIENDO EL "$" PARA EVITAR CONFLICTOS CON OTRAS LIBRERIAS
+            // AÑADIENDO VARIABLES PRIVADAS DEL MISMO PLUGIN
+            (function($){
+                var color = '#45ad12';
+                $.fn.variables_priv = function(){
+                    this.css('color',color);
+                    return this;
+                };
+            }(jQuery));
+            
+            // DEFINICION BASICA DEL PLUGIN JQUERY QUE CAMBIA EL COLOR DE TEXT0
+            // RECIBIENDO EL COLOR A APLICAR POR PARAMETRO
+            (function($){
+                $.fn.accepta_color = function(color, otro, otra){
+                    this.css('color',color);
+                    console.log(otro);
+                    console.log(otra);
+                    return this;
+                };
+            }(jQuery));
+            
+            
+            // DEFINICION BASICA DEL PLUGIN JQUERY QUE CAMBIA EL COLOR DE TEXT0
+            // UTILIZANDO EL METODO EACH PARA MANIPULAR INDIVIDUALMENTE
+            // CADA ELEMENTO DE LA COLECCION OBTENIDO CON EL SELECTOR $()
+            (function($){
+                var color = '#45ad12';
+                $.fn.obten_texto = function(){
+                    return this.each(function(){
+                        $(this).css('color',color);
+                        alert($(this).text());
+                    });
+                };
+            }(jQuery));
+            
+            
+            // DEFINICION BASICA DEL PLUGIN JQUERY QUE CAMBIA EL COLOR DE TEXT0
+            // Y EL COLOR DE FONDO
+            // UTILIZANDO OPCIONES POR DEFAULT Y EXTENDIENDOLAS CON LAS 
+            // OPCIONES QUE SON PASADAS COMO PARAMETROS (notacion JSON)
+            (function($){                
+                $.fn.parametros = function(options){
+                    var defaults = $.extend({
+                        color: '#000000',
+                        background : '#FFFFFF'
+                        
+                    },options);
+                
+                    return this.each(function(){
+                        $(this).css('color',defaults.color);
+                        $(this).css('background-color',defaults.background);
+                        
+                        alert($(this).text());
+                    });
+                };
+            }(jQuery));
+            
+            $(document).ready(function(e) {
+                $('p').ejemplo1();
+                $('p').encadenado().addClass('texto');
+                $('p').protegiendo().addClass('texto_protegido');
+                
+                $('p').variables_priv().removeClass('texto texto_protegido').addClass('variables');
+                $('p').accepta_color('#AAA','222',"asdasd").removeClass().addClass('color_dinamico');
+                
+                $('p').obten_texto().addClass('obten_texto');
+                
+                $('p').parametros({
+                    color : 'blue',
+                    background : 'green'
+                }).addClass('parametros');
+                
+                
+            });
+        </script>
+    </head>
+    <body>
+        <p>Hola</p>
+        <p>ke</p>
+        <p>ase</p>
+        <p>tepacheando</p>
+        <p>o que</p>
+        <p>ase</p>
+    </body>
+</html>
